@@ -10,8 +10,8 @@ function hideMultiFormButtons(button_class) {
     });
 }
 function base_url() {
-    var src = $('link[href*="time_tracker.css"]')[0].href;
-    return src.substr(0, src.indexOf('plugin_assets'));
+    var src = $('link[href*="stylesheets/jquery"]')[0].href; 
+    return src.substr(0, src.indexOf('stylesheets')) ;
 }
 // ================== validation helpers ============================
 
