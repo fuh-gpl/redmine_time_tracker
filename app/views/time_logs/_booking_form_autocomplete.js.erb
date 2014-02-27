@@ -1,5 +1,15 @@
 <% unless time_log.nil? %>
-<% if Setting.plugin_redmine_time_tracker[:booking_use_issue_comments]  %>
+<% if Setting.plugin_redmine_time_tracker[:booking_no_issue_comments] %>
+$(function () {
+    $('#time_log_add_booking_<%= time_log.id.to_s %>_issue_id').autocomplete({
+        source:'tt_completer/get_issue.json?key=<%= key %>',
+        minLength:0,
+        select:function (event, ui) {
+            updateBookingProject('<%= key %>', 'time_log_add_booking_<%= time_log.id.to_s %>');
+        }
+    });
+});
+<% else %>
 $(function () {
     $('#time_log_add_booking_<%= time_log.id.to_s %>_issue_id').autocomplete({
         source:'tt_completer/get_issue.json?key=<%= key %>',
@@ -22,17 +32,6 @@ $(function () {
         }
     });
 });
-<% else %>
-$(function () {
-    $('#time_log_add_booking_<%= time_log.id.to_s %>_issue_id').autocomplete({
-        source:'tt_completer/get_issue.json?key=<%= key %>',
-        minLength:0,
-        select:function (event, ui) {
-            updateBookingProject('<%= key %>', 'time_log_add_booking_<%= time_log.id.to_s %>');
-        }
-    });
-});
-
 <% end %>
 $(document).ready(function() {
     validate_list_inputs('time_log_add_booking_<%= time_log.id.to_s %>');
