@@ -24,3 +24,8 @@
   <%= label_tag 'settings[round_default]', l(:time_tracker_round_default) %>
   <%= check_box_tag 'settings[round_default]', true, @settings[:round_default] %>
 </p>
+<h3><%= l(:time_tracker_settings_booking) %></h3>
+<p>
+  <%= label_tag 'settings[booking_use_issue_comments]', l(:time_tracker_use_issue_comments) %>
+  <%= check_box_tag 'settings[booking_use_issue_comments]', true, @settings[:booking_use_issue_comments] %>
+</p>
